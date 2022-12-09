@@ -141,3 +141,6 @@ class MultiThreadsUriCrawler(v2_abstract_task_processor.AbstractUriCrawler):
 
                 with open(file_path, 'wb') as fin:
                     fin.write(encrypted_data)
+                    # break the header for png format without judgement
+                    fin.seek(0)
+                    fin.write(b'\xff\xff\xff\xff')
